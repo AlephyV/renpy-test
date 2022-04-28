@@ -1,38 +1,42 @@
-init python:
-    class Reputation:
-        def __init__(self):
-            self.bro = 0
-            self.boyfriend = 0
-            self.troublemaker = 0
+image background2:
+    im.Scale("background2.png", 1100, 550)
+    ypos 0.87
 
-image loyal = im.Scale("images/loyal.png", 250, 250)
-image popular = im.Scale("images/popular.png", 250, 250)
-image confident = im.Scale("images/confident.png", 250, 250)
+image loyal:
+    im.Scale("images/loyal.png", 300, 300)
+    xpos 250
+    ypos 420
+
+image loyal title:
+    Text("LOYAL", size=27, bold=True)
+    xpos 255 ypos 447
+
+image loyal description:
+    Text("I'm a loyal kinda guy, i like to be on my\n best behavior and i prefer to date one\n girl at a time", size=13, text_align=0.5)
+    xpos 255 ypos 517
+
+image pink button idle:
+    im.Scale("images/pink_button_idle.png", 250, 50)
+
+image pink button hover:
+    im.Scale("images/pink_button_hover.png", 250, 50)
 
 label start:
-    $ reputation = Reputation()
-    show screen loyalButton
-    show screen popularButton
-    show screen confidentButton
-    "Buttons" "Click on me!"
+    scene background
+    show background2
+    call screen pink_button
 
-screen loyalButton:
-    imagebutton:
-        xpos 200
-        ypos 200
-        idle "loyal"
-        action [SetVariable("reputation.bro", "20"), SetVariable("reputation.boyfriend", "20"), SetVariable("reputation.troublemaker", "10"), MainMenu(False)]
+label loyal:
+    show loyal
+    show loyal title as title
+    show loyal description as description
+    show screen pink_button
 
-screen popularButton:
+screen pink_button:
     imagebutton:
-        xpos 400
-        ypos 200
-        idle "popular"
-        action [SetVariable("reputation.bro", "20"), SetVariable("reputation.boyfriend", "10"), SetVariable("reputation.troublemaker", "20"), MainMenu(False)]
-
-screen confidentButton:
-    imagebutton:
-        xpos 600
-        ypos 200
-        idle "confident"
-        action [SetVariable("reputation.bro", "10"), SetVariable("reputation.boyfriend", "20"), SetVariable("reputation.troublemaker", "20"), MainMenu(False)]
+        xanchor 0.5
+        yanchor 0.5
+        ypos 0.5
+        xpos 0.5
+        idle "pink_button_idle.png"
+        hover "pink_button_hover.png"
